@@ -5,9 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.util.Log;
 
-import java.util.ArrayList;
+import java.sql.Blob;
 
 /**
  * Created by Shubham on 01-Jul-17.
@@ -26,8 +28,10 @@ public class DatabaseController  {
         // TODO: replace the TABLE_NAME. This is done for a single API only.
         sqLiteDatabase.insert(Constant.TABLE_NAME[0],null,currentNews);
     }
-    public String getNews(){
+    public Bundle getNews(){
 
+
+        Bundle newsFromTableBundle=new Bundle();
         StringBuffer newsFromTable=new StringBuffer();
         SQLiteDatabase sqLiteDatabase=myHelper.getReadableDatabase();
         Cursor cursor=sqLiteDatabase.query(Constant.TABLE_NAME[0],null,null,null,null,null,null,null);
@@ -36,10 +40,17 @@ public class DatabaseController  {
             String title=cursor.getString(cursor.getColumnIndex(Constant.TITLE));
             String description=cursor.getString(cursor.getColumnIndex(Constant.DESCRIPTION));
             String publishedAt=cursor.getString(cursor.getColumnIndex(Constant.PUBLISHED_AT));
+            byte image[]=cursor.getBlob(cursor.getColumnIndex(Constant.IMAGE));
             newsFromTable.append("\n\nTITLE: "+title+"\n"+"Published At: "+publishedAt+"\n"+"Description: "+description );
+//            newsFromTable.putString("title",title);
+//            newsFromTable.putString("description",description);
+//            newsFromTable.putString("publishedAt",publishedAt);
+            newsFromTableBundle.putString("text",newsFromTable.toString());
+            newsFromTableBundle.putByteArray("image",image);
 
         }
-        return newsFromTable.toString();
+        //return newsFromTable.toString();
+        return  newsFromTableBundle;
 
 
     }

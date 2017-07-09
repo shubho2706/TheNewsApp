@@ -3,6 +3,8 @@ package com.example.shubham.thenewsapp;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,6 +94,12 @@ public class SpinnerActivity extends AppCompatActivity {
                     currentNews.put(Constant.TITLE,""+jsonObject1.get("title"));
                     currentNews.put(Constant.DESCRIPTION,""+jsonObject1.get("description"));
                     currentNews.put(Constant.PUBLISHED_AT,""+jsonObject1.get("publishedAt"));
+
+                    URL urlImage = new URL("http://image10.bizrate-images.com/resize?sq=60&uid=2216744464");
+                    Bitmap bmp = BitmapFactory.decodeStream(urlImage.openConnection().getInputStream());
+
+                    currentNews.put(Constant.IMAGE,""+bmp);
+
 
                     Constant.databaseController.putNews(currentNews);
                    /* finalNews.append("\n\nTITLE: ").append(jsonObject1.get("title"))
