@@ -1,6 +1,7 @@
 package com.example.shubham.thenewsapp;
 
 
+import android.content.Context;
 
 /**
  * Created by Shubham on 09-07-2017.
@@ -11,6 +12,7 @@ public class Constant {
     public static DatabaseController databaseController;
     public static String DATABASE_NAME="NEWS";
     public static int DATABASE_VERSION=1;
+
 
     public static final String TABLE_NAME[] = {"TOI"};
     //Database columns :

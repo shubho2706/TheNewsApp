@@ -1,6 +1,8 @@
 package com.example.shubham.thenewsapp;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -18,29 +20,29 @@ public class DatabaseController  {
     DatabaseController(Context context){
         myHelper=new MyHelper(context);
     }
+    public void putNews(ContentValues currentNews){
+
+        SQLiteDatabase sqLiteDatabase=myHelper.getWritableDatabase();
+        // TODO: replace the TABLE_NAME. This is done for a single API only.
+        sqLiteDatabase.insert(Constant.TABLE_NAME[0],null,currentNews);
+    }
+    public String getNews(){
+
+        StringBuffer newsFromTable=new StringBuffer();
+        SQLiteDatabase sqLiteDatabase=myHelper.getReadableDatabase();
+        Cursor cursor=sqLiteDatabase.query(Constant.TABLE_NAME[0],null,null,null,null,null,null,null);
+        while(cursor.moveToNext()){
+
+            String title=cursor.getString(cursor.getColumnIndex(Constant.TITLE));
+            String description=cursor.getString(cursor.getColumnIndex(Constant.DESCRIPTION));
+            String publishedAt=cursor.getString(cursor.getColumnIndex(Constant.PUBLISHED_AT));
+            newsFromTable.append("\n\nTITLE: "+title+"\n"+"Published At: "+publishedAt+"\n"+"Description: "+description );
+
+        }
+        return newsFromTable.toString();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
     private static class MyHelper extends SQLiteOpenHelper{
@@ -62,7 +64,7 @@ public class DatabaseController  {
                 +Constant.PUBLISHED_AT+" VARCHAR(255), "
                 +Constant.TITLE+ " VARCHAR(255), "
                 +Constant.IMAGE+" BLOB, "
-                +Constant.DESCRIPTION+" TEXT";
+                +Constant.DESCRIPTION+" VARCHAR(255));";
 
                 db.execSQL(CREATE_TABLE);
                 Log.d("onCreate(): ","Table created");
