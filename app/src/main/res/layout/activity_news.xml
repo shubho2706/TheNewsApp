@@ -6,14 +6,26 @@
     android:layout_height="match_parent"
     tools:context="com.example.shubham.thenewsapp.NewsActivity"
     android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/text"/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"/>
+            <!--<TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/text"/>-->
+           <!-- <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="picture"
+                android:id="@+id/imageView"
+                android:layout_margin=""/>-->
+        </LinearLayout>
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>

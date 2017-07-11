@@ -1,3 +1,108 @@
 <resources>
-    <string name="app_name">TheNewsApp</string>
+    <string name="app_name" translatable="false">TheNewsApp</string>
+    <string name="API_Key">cd5d4db1ea284edbb026179b8c7f7677</string>
+
+
+    <!--
+    <string name="ABC_News" >https://newsapi.org/v1/articles?source=abc-news-au&sortBy=top&apiKey=</string>
+    <string name="Al_Jazeera_News">https://newsapi.org/v1/articles?source=al-jazeera-english</string>
+-->
+    <string-array name="string">
+        <item>abc-news-au</item>
+        <item>al-jazeera-english</item>
+        <item>ars-technic</item>
+        <item>associated-press</item>
+        <item>bbc-news</item>
+        <item>bbc-sport</item>
+        <item>bild</item>
+        <item>bloomberg</item>
+        <item>breitbart-news</item>
+        <item>business-insider</item>
+        <item>business-insider-uk</item>
+        <item>buzzfeed</item>
+        <item>cnbc</item>
+        <item>cnn</item>
+        <item>daily-mail</item>
+        <item>der-tagesspiegel</item>
+        <item>die-zeit</item>
+        <item>engadget</item>
+        <item>entertainment-weekly</item>
+        <item>espn</item>
+        <item>espn-cric-info</item>
+        <item>financial-times</item>
+        <item>focus</item>
+        <item>football-italia</item>
+        <item>fortune</item>
+        <item>four-four-two</item>
+        <item>fox-sports</item>
+        <item>google-news</item>
+        <item>gruenderszene</item>
+        <item>hacker-news</item>
+        <item>handelsblatt</item>
+        <item>ign</item>
+        <item>independent</item>
+        <item>mashable</item>
+        <item>metro</item>
+        <item>mirror</item>
+        <item>mtv-new</item>
+        <item>s</item>
+        <item>mtv-news-uk</item>
+        <item>national-geographic</item>
+        <item>new-scientist</item>
+        <item>newsweek</item>
+        <item>new-york-magazine</item>
+        <item>nfl-news</item>
+        <item>polygon</item>
+        <item>recode</item>
+        <item>reddit-r-all</item>
+        <item>reuters</item>
+        <item>spiegel-online</item>
+        <item>t3n</item>
+        <item>talksport</item>
+        <item>techcrunch</item>
+        <item>techradar</item>
+        <item>the-economist</item>
+        <item>the-guardian-au</item>
+        <item>the-guardian-uk</item>
+        <item>the-hindu</item>
+        <item>the-huffington-post</item>
+        <item>the-lad-bible</item>
+        <item>the-new-york-times</item>
+        <item>the-next-web</item>
+        <item>the-telegraph</item>
+        <item>the-times-of-india</item>
+        <item>the-verge</item>
+        <item>the-wall-street-journal</item>
+        <item>the-washington-post</item>
+        <item>time</item>
+        <item>usa-today</item>
+        <item>wired-de</item>
+        <item>wirtschafts-woche</item>
+
+
+
+    </string-array>
+
+
+
+
+    <!--
+
+    <string name="">wirtschafts-woche</string>&lt;!&ndash;only top/no latest&ndash;&gt
+    <string name="">espn</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">focus</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">mtv-news-uk</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">national-geographic</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">new-scientist</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">polygon</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">recode</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">spiegel-online</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">t3n</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">the-guardian-au</string>&lt;!&ndash;only top/no latest&ndash;&gt;<
+    <string name="">the-huffington-post</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">the-new-york-times</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">the-next-web</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">the-wall-street-journal</string>&lt;!&ndash;only top/no latest&ndash;&gt;
+    <string name="">the-washington-post</string>&lt;!&ndash;only top/no latest&ndash;&gt;-->
+
 </resources>

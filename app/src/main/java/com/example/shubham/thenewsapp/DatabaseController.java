@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 
 /**
  * Created by Shubham on 01-Jul-17.
@@ -25,14 +26,15 @@ public class DatabaseController  {
     public void putNews(ContentValues currentNews){
 
         SQLiteDatabase sqLiteDatabase=myHelper.getWritableDatabase();
+        //TODO: check whether a specific news is already in the database and if yes of course don't reput in the database
         // TODO: replace the TABLE_NAME. This is done for a single API only.
         sqLiteDatabase.insert(Constant.TABLE_NAME[0],null,currentNews);
     }
-    public Bundle getNews(){
+    public ArrayList<Bundle> getNews(){
 
-
-        Bundle newsFromTableBundle=new Bundle();
-        StringBuffer newsFromTable=new StringBuffer();
+        ArrayList<Bundle> newsList=new ArrayList<>();
+        Bundle newsFromTableBundle;
+     //   StringBuffer newsFromTable=new StringBuffer();
         SQLiteDatabase sqLiteDatabase=myHelper.getReadableDatabase();
         Cursor cursor=sqLiteDatabase.query(Constant.TABLE_NAME[0],null,null,null,null,null,null,null);
         while(cursor.moveToNext()){
@@ -41,16 +43,28 @@ public class DatabaseController  {
             String description=cursor.getString(cursor.getColumnIndex(Constant.DESCRIPTION));
             String publishedAt=cursor.getString(cursor.getColumnIndex(Constant.PUBLISHED_AT));
             byte image[]=cursor.getBlob(cursor.getColumnIndex(Constant.IMAGE));
-            newsFromTable.append("\n\nTITLE: "+title+"\n"+"Published At: "+publishedAt+"\n"+"Description: "+description );
+
+
+/*            newsFromTable.append("\n\nTITLE: ").append(title)
+                    .append("\nPublished At: ").append(publishedAt)
+                    .append("\nDescription: ").append(description);*/
 //            newsFromTable.putString("title",title);
 //            newsFromTable.putString("description",description);
 //            newsFromTable.putString("publishedAt",publishedAt);
-            newsFromTableBundle.putString("text",newsFromTable.toString());
+
+
+            newsFromTableBundle=new Bundle();
+            newsFromTableBundle.putString("title",title);
+            newsFromTableBundle.putString("publishedAt",publishedAt);
+            newsFromTableBundle.putString("description",description);
+            //newsFromTableBundle.putString("text",newsFromTable.toString());
             newsFromTableBundle.putByteArray("image",image);
+
+            newsList.add(newsFromTableBundle);
 
         }
         //return newsFromTable.toString();
-        return  newsFromTableBundle;
+        return  newsList;
 
 
     }

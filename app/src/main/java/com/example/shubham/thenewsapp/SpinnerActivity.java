@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.support.annotation.ArrayRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -32,7 +33,9 @@ public class SpinnerActivity extends AppCompatActivity {
         Constant.databaseController=new DatabaseController(/* new NewsActivity().*/getApplicationContext());
         GetNews getNews=new GetNews();
         //// TODO: buildUrl = All the urls of the APIs
-        getNews.execute("https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=top&apiKey=cd5d4db1ea284edbb026179b8c7f7677");
+        String api="The-Times-of-India";
+        //https://newsapi.org/v1/articles?source=the-times-of-india&sortBy=top&apiKey=cd5d4db1ea284edbb026179b8c7f7677
+        getNews.execute("https://newsapi.org/v1/articles?source="+api.toLowerCase()+"&sortBy=top&apiKey=cd5d4db1ea284edbb026179b8c7f7677");
     }
 
 
@@ -41,11 +44,14 @@ public class SpinnerActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean b) {
             //super.onPostExecute(s);
            // textView.setText(s);
-
-            if(b)
-                Toast.makeText(context,"News Updated",Toast.LENGTH_LONG).show();
+            if(b!=null) {
+                if (b)
+                    Toast.makeText(context, "News Updated", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(context, "Failed to Updated News", Toast.LENGTH_LONG).show();
+            }
             else
-                Toast.makeText(context,"Failed to Updated News",Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Unable to Connect to Internet", Toast.LENGTH_LONG).show();
 
             Intent intent=new Intent(context,NewsActivity.class);
             startActivity(intent);
@@ -85,10 +91,7 @@ public class SpinnerActivity extends AppCompatActivity {
 
                 for(int i=0;i<jsonArray.length();i++){
 
-
-
                     JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                    //TODO: Update the database
 
                     ContentValues currentNews=new ContentValues();
                     currentNews.put(Constant.TITLE,""+jsonObject1.get("title"));
